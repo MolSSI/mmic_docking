@@ -17,10 +17,6 @@ Applications of docking include:
 # Docking Component
 ## Preparing Input
 
-<p align="center">
-<img src="mmcomponents_docking/data/imgs/autodockconv.png">
-</p>
-
 ```python
 # Import MM molecule data model
 from mmelemental.models.molecule.mm_molecule import MMolecule
