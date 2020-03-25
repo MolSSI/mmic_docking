@@ -22,19 +22,19 @@ Applications of docking include:
 </p>
 
 ```python
-# Import converter component for autodock vina
-from components.implementation.docking.autodock_convert_component import ConvertAutoDockComponent
+# Import MM molecule data model
+from mmelemental.models.molecule.mm_molecule import MMolecule
+
+# Construct MM molecules
+receptor_data   = MMolecule.from_file(pdb_file)
+ligand_data     = MMolecule.from_data(smiles_code)
 
 # Import docking data model
-from models.components.docking.input import DockingRawInput
+from mmcomponents_docking.models.docking.input import DockingInput
 
-# Read raw docking input
-receptor_data   = smiles_code or smarts_code or pdb_file ...
-ligand_data     = smiles_code or smarts_code or pdb_file ...
-dock_raw_input  = DockingRawInput(ligand=ligand_data, receptor=receptor_data)
+# Construct docking input data from MM molecules
+dock_input = DockingInput(ligand=ligand_data, receptor=receptor_data)
 
-# Convert raw docking input to a docking data object
-dock_input = ConvertAutoDockComponent.compute(dock_raw_input)
 ```
 
 ## Running Docking with AutoDock Vina component
