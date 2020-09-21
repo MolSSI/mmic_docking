@@ -53,7 +53,7 @@ class AutoDockPostComponent(DockPostComponent, CmdComponent):
         poses = []
 
         for ligname in ligands:
-            with FileOutput(path=os.path.abspath(ligname)) as pdbqt:
+            with FileOutput(path=os.path.abspath(ligname), clean=True) as pdbqt:
                 pdbqt.write(ligands[ligname])
             
                 obabel_input = OpenBabelInput(fileInput=FileInput(path=pdbqt.path), outputExt='pdb')
