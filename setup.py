@@ -1,5 +1,5 @@
 """
-mmcomponents_docking
+mmic_docking
 Component for molecular docking
 """
 import sys
@@ -21,7 +21,7 @@ except:
 
 setup(
     # Self-descriptive entries which should always be present
-    name='mmcomponents_docking',
+    name='mmic_docking',
     author='MolSSI',
     author_email='info@molssi.org',
     description=short_description[0],
