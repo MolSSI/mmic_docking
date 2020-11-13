@@ -36,7 +36,7 @@ dock_input = DockingInput(ligand=ligand_data, receptor=receptor_data)
 ## Running Docking with AutoDock Vina component
 
 <p align="center">
-<img src="mmcomponents_docking/data/imgs/autodock.png">
+<img src="mmic_docking/data/imgs/autodock.png">
 </p>
 
 ```python
