@@ -26,7 +26,7 @@ receptor_data   = Molecule.from_file(pdb_file)
 ligand_data     = Molecule.from_data(smiles_code)
 
 # Import docking data model
-from mmic_docking.models.docking.input import DockingInput
+from mmic_docking.models.input import DockingInput
 
 # Construct docking input data from MM molecules
 dock_input = DockingInput(ligand=ligand_data, receptor=receptor_data)
@@ -41,7 +41,7 @@ dock_input = DockingInput(ligand=ligand_data, receptor=receptor_data)
 
 ```python
 # Import docking simulation component for autodock vina
-from mmic_docking.autodock.autodock_component import AutoDockComponent
+from mmic_docking.components.autodock.autodock_component import AutoDockComponent
 
 # Run autodock vina
 dock_output = AutoDockComponent.compute(dock_input)
