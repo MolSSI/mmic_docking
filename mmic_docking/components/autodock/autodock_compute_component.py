@@ -1,9 +1,9 @@
 from typing import Any, Dict, List, Optional, Tuple
-from mmcomponents_docking.models.autodock.input import AutoDockComputeInput
-from mmcomponents_docking.models.autodock.output import AutoDockComputeOutput
+from mmic_docking.models.autodock.input import AutoDockComputeInput
+from mmic_docking.models.autodock.output import AutoDockComputeOutput
 from mmelemental.models.util.output import CmdOutput
 from mmelemental.models.util.input import FileInput
-from mmcomponents.components.blueprints.util.cmd_component import CmdComponent
+from mmelemental.components.util.cmd_component import CmdComponent
 import os
 
 class AutoDockComputeComponent(CmdComponent):

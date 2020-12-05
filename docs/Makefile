@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = mmcomponents_docking
+SPHINXPROJ    = mmic_docking
 SOURCEDIR     = .
 BUILDDIR      = _build
 

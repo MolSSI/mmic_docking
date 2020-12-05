@@ -17,12 +17,12 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
-import mmcomponents_docking
+import mmic_docking
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'mmcomponents_docking'
+project = 'mmic_docking'
 copyright = ("2020, MolSSI. Project structure based on the "
              "Computational Molecular Science Python Cookiecutter version 1.1")
 author = 'MolSSI'
@@ -117,7 +117,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'mmcomponents_dockingdoc'
+htmlhelp_basename = 'mmic_dockingdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -144,8 +144,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'mmcomponents_docking.tex', 'mmcomponents_docking Documentation',
-     'mmcomponents_docking', 'manual'),
+    (master_doc, 'mmic_docking.tex', 'mmic_docking Documentation',
+     'mmic_docking', 'manual'),
 ]
 
 
@@ -154,7 +154,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'mmcomponents_docking', 'mmcomponents_docking Documentation',
+    (master_doc, 'mmic_docking', 'mmic_docking Documentation',
      [author], 1)
 ]
 
@@ -165,8 +165,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'mmcomponents_docking', 'mmcomponents_docking Documentation',
-     author, 'mmcomponents_docking', 'Component for molecular docking',
+    (master_doc, 'mmic_docking', 'mmic_docking Documentation',
+     author, 'mmic_docking', 'Component for molecular docking',
      'Miscellaneous'),
 ]
 

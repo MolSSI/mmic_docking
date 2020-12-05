@@ -1,16 +1,16 @@
 from typing import List, Optional, Tuple, Union
 from qcelemental import models
-from mmelemental.models.molecule.mm_molecule import MMolecule
+from mmelemental.models.molecule.mm_molecule import Molecule
 from mmelemental.models.chem.codes import ChemCode
 from mmelemental.models.util.input import FileInput
 from pydantic import Field
 
 class DockingInput(models.ProtoModel):
-    ligand: MMolecule = Field(
+    ligand: Molecule = Field(
         ..., 
         description = "Molecule model for candidate ligand (e.g. drug)."
     )
-    receptor: MMolecule = Field(
+    receptor: Molecule = Field(
         ..., 
         description = "Molecule model for receptor (e.g. protein)."
     )

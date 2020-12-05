@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=mmcomponents_docking
+set SPHINXPROJ=mmic_docking
 
 if "%1" == "" goto help
 

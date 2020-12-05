@@ -1,10 +1,10 @@
 """
-mmcomponents_docking
+mmic_docking
 Component for molecular docking
 """
 
 # Add imports here
-from .mmcomponents_docking import *
+from .mmic_docking import *
 from . import components
 from . import models
 

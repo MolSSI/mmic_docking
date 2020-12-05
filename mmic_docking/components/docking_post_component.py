@@ -1,5 +1,5 @@
-from mmcomponents.components.base.base_component import ProgramHarness
-from mmcomponents_docking.models.output import DockingOutput, DockingComputeOutput
+from mmic.components.base.base_component import ProgramHarness
+from mmic_docking.models.output import DockingOutput, DockingComputeOutput
 from typing import Any, List
 
 class DockPostComponent(ProgramHarness):

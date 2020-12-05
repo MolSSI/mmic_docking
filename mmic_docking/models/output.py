@@ -1,6 +1,6 @@
 from typing import List, Optional, Tuple, Union
 from .input import DockingInput
-from mmelemental.models.molecule.mm_molecule import MMolecule
+from mmelemental.models.molecule.mm_molecule import Molecule
 from mmelemental.models.util.input import FileInput
 from mmelemental.models.util.output import ComputeOutput
 
@@ -12,7 +12,7 @@ class DockingOutput(models.ProtoModel):
         ..., 
         description = "Docking input model."
     )
-    poses: List[MMolecule] = Field(
+    poses: List[Molecule] = Field(
         ...,
         description = "Conformation and orientation of the candidate ligand relative to the receptor."
     )
@@ -20,7 +20,7 @@ class DockingOutput(models.ProtoModel):
         ...,
         description = "A metric for evaluating a particular pose. Length of scores must be equal to length of poses."
     )
-    flexible: Optional[List[MMolecule]] = Field(
+    flexible: Optional[List[Molecule]] = Field(
         None,
         description = "Conformation and orientation of the flexible side chains in the receptor relative to the ligand."
     )

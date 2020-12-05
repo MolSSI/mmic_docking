@@ -1,7 +1,7 @@
-from mmcomponents_docking.components.docking_component import DockingComponent
-from mmcomponents_docking.components.autodock.autodock_prep_component import AutoDockPrepComponent
-from mmcomponents_docking.components.autodock.autodock_compute_component import AutoDockComputeComponent
-from mmcomponents_docking.components.autodock.autodock_post_component import AutoDockPostComponent
+from mmic_docking.components.docking_component import DockingComponent
+from mmic_docking.components.autodock.autodock_prep_component import AutoDockPrepComponent
+from mmic_docking.components.autodock.autodock_compute_component import AutoDockComputeComponent
+from mmic_docking.components.autodock.autodock_post_component import AutoDockPostComponent
 
 from typing import Any, Dict, List, Optional, Tuple
 

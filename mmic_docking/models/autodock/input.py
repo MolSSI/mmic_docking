@@ -1,5 +1,5 @@
 from typing import List, Optional, Tuple, Union
-from mmcomponents_docking.models.input import DockingComputeInput
+from mmic_docking.models.input import DockingComputeInput
 from qcelemental import models 
 from pydantic import Field
 

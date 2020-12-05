@@ -4,4 +4,4 @@ API Documentation
 .. autosummary::
    :toctree: autosummary
 
-   mmcomponents_docking.canvas
+   mmic_docking.canvas

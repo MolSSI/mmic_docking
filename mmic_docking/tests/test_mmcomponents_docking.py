@@ -1,12 +1,12 @@
 """
-Unit and regression test for the mmcomponents_docking package.
+Unit and regression test for the mmic_docking package.
 """
 
 # Import package, test suite, and other packages as needed
-import mmcomponents_docking
+import mmic_docking
 import pytest
 import sys
 
-def test_mmcomponents_docking_imported():
+def test_mmic_docking_imported():
     """Sample test, will always pass so long as import statement worked"""
-    assert "mmcomponents_docking" in sys.modules
+    assert "mmic_docking" in sys.modules

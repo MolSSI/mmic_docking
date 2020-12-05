@@ -1,13 +1,13 @@
-from mmcomponents_docking.models.autodock.output import AutoDockComputeOutput
-from mmcomponents_docking.models.output import DockingOutput
+from mmic_docking.models.autodock.output import AutoDockComputeOutput
+from mmic_docking.models.output import DockingOutput
 from mmelemental.models.util.input import OpenBabelInput, FileInput
 from mmelemental.models.util.output import FileOutput
-from mmelemental.models.molecule.mm_molecule import MMolecule
+from mmelemental.models.molecule.mm_molecule import Molecule
 from mmelemental.models.util.output import CmdOutput
 
-from mmcomponents_docking.components.docking_post_component import DockPostComponent
-from mmcomponents.components.implementation.util.openbabel_component import OpenBabel
-from mmcomponents.components.blueprints.util.cmd_component import CmdComponent
+from mmic_docking.components.docking_post_component import DockPostComponent
+from mmelemental.components.util.openbabel_component import OpenBabel
+from mmelemental.components.util.cmd_component import CmdComponent
 
 from typing import Any, Dict, List, Optional, Tuple
 import os
@@ -61,7 +61,7 @@ class AutoDockPostComponent(DockPostComponent, CmdComponent):
                 ligand_pdb = OpenBabel.compute(input_data=obabel_input).stdout
                 with FileOutput(path=os.path.abspath('ligand.pdb')) as pdb:
                     pdb.write(ligand_pdb)
-                    poses.append(MMolecule.from_file(pdb.path))
+                    poses.append(Molecule.from_file(pdb.path))
 
         cmdout = input_model.cmdout
         scores = self.get_scores(cmdout)
