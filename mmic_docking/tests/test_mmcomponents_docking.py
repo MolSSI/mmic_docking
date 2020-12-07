@@ -7,6 +7,7 @@ import mmic_docking
 import pytest
 import sys
 
+
 def test_mmic_docking_imported():
     """Sample test, will always pass so long as import statement worked"""
     assert "mmic_docking" in sys.modules

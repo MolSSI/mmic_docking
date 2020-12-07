@@ -12,6 +12,7 @@ from mmelemental.components.util.cmd_component import CmdComponent
 from typing import Any, Dict, List, Optional, Tuple
 import os
 
+
 class AutoDockPostComponent(DockPostComponent, CmdComponent):
     """ Postprocessing autodock component. """
 
@@ -19,16 +20,28 @@ class AutoDockPostComponent(DockPostComponent, CmdComponent):
     def input(cls):
         return AutoDockComputeOutput
 
-    def build_input(self, input_model: AutoDockComputeOutput, config: "TaskConfig" = None, 
-        template: Optional[str] = None) -> Dict[str, Any]:
+    def build_input(
+        self,
+        input_model: AutoDockComputeOutput,
+        config: "TaskConfig" = None,
+        template: Optional[str] = None,
+    ) -> Dict[str, Any]:
         """ Builds input files for autodock vina_split. """
 
         system = input_model.system
 
-        fsystem = FileOutput(path=os.path.abspath('system.pdbqt'))
+        fsystem = FileOutput(path=os.path.abspath("system.pdbqt"))
         fsystem.write(system)
 
-        cmd = ["vina_split", '--input', fsystem.path, '--ligand', 'ligand', '--flex', 'flex']
+        cmd = [
+            "vina_split",
+            "--input",
+            fsystem.path,
+            "--ligand",
+            "ligand",
+            "--flex",
+            "flex",
+        ]
         env = os.environ.copy()
 
         if config:
@@ -40,47 +53,53 @@ class AutoDockPostComponent(DockPostComponent, CmdComponent):
         return {
             "command": cmd,
             "infiles": None,
-            "outfiles": ['ligand*', 'flex*'],
+            "outfiles": ["ligand*", "flex*"],
             "scratch_directory": scratch_directory,
             "environment": env,
-            "clean_files": fsystem
+            "clean_files": fsystem,
         }
 
-    def parse_output(self, outfiles: Dict[str, Dict[str, str]], input_model: AutoDockComputeOutput) -> DockingOutput:
+    def parse_output(
+        self, outfiles: Dict[str, Dict[str, str]], input_model: AutoDockComputeOutput
+    ) -> DockingOutput:
         """ Parses output from vina_split. """
 
-        ligands = outfiles['outfiles']['ligand*']
+        ligands = outfiles["outfiles"]["ligand*"]
         poses = []
 
         for ligname in ligands:
             with FileOutput(path=os.path.abspath(ligname), clean=True) as pdbqt:
                 pdbqt.write(ligands[ligname])
-            
-                obabel_input = OpenBabelInput(fileInput=FileInput(path=pdbqt.path), outputExt='pdb')
-                
+
+                obabel_input = OpenBabelInput(
+                    fileInput=FileInput(path=pdbqt.path), outputExt="pdb"
+                )
+
                 ligand_pdb = OpenBabel.compute(input_data=obabel_input).stdout
-                with FileOutput(path=os.path.abspath('ligand.pdb')) as pdb:
+                with FileOutput(path=os.path.abspath("ligand.pdb")) as pdb:
                     pdb.write(ligand_pdb)
                     poses.append(Molecule.from_file(pdb.path))
 
         cmdout = input_model.cmdout
         scores = self.get_scores(cmdout)
 
-        return DockingOutput(dockingInput=input_model.dockingInput, poses=poses, scores=scores)
+        return DockingOutput(
+            dockingInput=input_model.dockingInput, poses=poses, scores=scores
+        )
 
     def get_scores(self, cmdout: CmdOutput) -> List[float]:
-        """ 
-        Extracts scores from autodock vina command-line output. 
-        .. todo:: Extract and return RMSD values. 
+        """
+        Extracts scores from autodock vina command-line output.
+        .. todo:: Extract and return RMSD values.
         """
         read_scores = False
         scores = []
 
-        for line in cmdout.stdout.split('\n'):
-            if line == '-----+------------+----------+----------':
+        for line in cmdout.stdout.split("\n"):
+            if line == "-----+------------+----------+----------":
                 read_scores = True
                 continue
-            elif 'Writing output' in line:
+            elif "Writing output" in line:
                 break
             if read_scores:
                 trial, score, _, _ = line.split()

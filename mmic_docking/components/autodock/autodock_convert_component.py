@@ -7,8 +7,8 @@ from mmelemental.models.molecule.mm_molecule import Molecule
 from mmelemental.models.util.input import FileInput
 from mmelemental.models.chem.codes import ChemCode
 
-class ConvertAutoDockComponent(MolConstructorComponent):
 
+class ConvertAutoDockComponent(MolConstructorComponent):
     @classmethod
     def input(cls):
         return DockingRawInput
@@ -26,15 +26,15 @@ class ConvertAutoDockComponent(MolConstructorComponent):
         timeout: Optional[int] = None,
     ) -> Tuple[bool, Dict[str, Any]]:
 
-        if(os.path.isfile(inputs.ligand)):
+        if os.path.isfile(inputs.ligand):
             ligand = FileInput(path=inputs.ligand)
-        else: # had better be a valid chem code
+        else:  # had better be a valid chem code
             ligand = ChemCode(code=inputs.ligand)
         ligand = self.constructor(ligand)
 
-        if(os.path.isfile(inputs.receptor)):
+        if os.path.isfile(inputs.receptor):
             receptor = FileInput(path=inputs.receptor)
-        else: # had better be a valid chem code
+        else:  # had better be a valid chem code
             receptor = ChemCode(code=inputs.receptor)
         receptor = self.constructor(receptor)
 
