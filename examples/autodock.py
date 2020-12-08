@@ -4,7 +4,7 @@ from mmic_docking.components.autodock.autodock_convert_component import (
 )
 
 from mmelemental.models.molecule.mm_molecule import Molecule
-from mmic_docking.models.input import DockingInput
+from mmelemental.models.sim.docking import DockingInput
 
 # Construct docking input
 receptor = Molecule.from_file("mmic_docking/data/PHIPA_C2/PHIPA_C2_apo.pdb")
