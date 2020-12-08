@@ -1,28 +1,9 @@
 from typing import List, Optional, Tuple, Union
-from qcelemental import models
-from mmelemental.models.molecule.mm_molecule import Molecule
-from mmelemental.models.chem.codes import ChemCode
-from mmelemental.models.util.input import FileInput
+from mmelemental import models
+from mmelemental.models.sim.docking import DockingInput
 from pydantic import Field
 
-
-class DockingInput(models.ProtoModel):
-    ligand: Molecule = Field(
-        ..., description="Molecule model for candidate ligand (e.g. drug)."
-    )
-    receptor: Molecule = Field(
-        ..., description="Molecule model for receptor (e.g. protein)."
-    )
-    searchSpace: Optional[
-        List[Tuple[float, float, float, float, float, float]]
-    ] = Field(
-        None,
-        description="A 3D box defined by (xmin, xmax, ymin, ymax, zmin, zmax)."
-        "The search space effectively restricts where the movable atoms, including those in the flexible side chains, should lie.",
-    )
-
-
-class DockingRawInput(models.ProtoModel):
+class DockingRawInput(models.base.Base):
     ligand: str = Field(
         ...,
         description="Path to ligand (e.g. drug) input file, or chemical code (e.g. smiles).",
@@ -33,7 +14,7 @@ class DockingRawInput(models.ProtoModel):
     )
 
 
-class DockingComputeInput(models.ProtoModel):
+class DockingComputeInput(models.base.Base):
     dockingInput: DockingInput = Field(..., description="Docking input model.")
     ligand: str = Field(..., description="Ligand file string.")
     receptor: str = Field(..., description="Receptor file string.")

@@ -1,5 +1,5 @@
 from mmic_docking.models.autodock.output import AutoDockComputeOutput
-from mmic_docking.models.output import DockingOutput
+from mmelemental.models.output.docking import DockingOutput
 from mmelemental.models.util.input import OpenBabelInput, FileInput
 from mmelemental.models.util.output import FileOutput
 from mmelemental.models.molecule.mm_molecule import Molecule

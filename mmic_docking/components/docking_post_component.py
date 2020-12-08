@@ -1,9 +1,10 @@
-from mmic.components.base.base_component import ProgramHarness
-from mmic_docking.models.output import DockingOutput, DockingComputeOutput
+from mmic.components.blueprints.generic_component import GenericComponent
+from mmic_docking.models.output import DockingComputeOutput
+from mmelemental.models.output.docking import DockingOutput
 from typing import Any, List
 
 
-class DockPostComponent(ProgramHarness):
+class DockPostComponent(GenericComponent):
     """ Postprocessing component for docking. """
 
     @classmethod
