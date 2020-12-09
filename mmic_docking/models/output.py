@@ -1,5 +1,5 @@
 from typing import List, Optional
-from mmelemental.models.sim.docking import DockingInput
+from mmelemental.models.input.docking import DockingInput
 from mmelemental.models.util.output import ComputeOutput
 from pydantic import Field
 

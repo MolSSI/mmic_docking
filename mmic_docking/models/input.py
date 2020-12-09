@@ -1,6 +1,6 @@
 from typing import List, Optional, Tuple, Union
 from mmelemental import models
-from mmelemental.models.sim.docking import DockingInput
+from mmelemental.models.input.docking import DockingInput
 from pydantic import Field
 
 class DockingRawInput(models.base.Base):
