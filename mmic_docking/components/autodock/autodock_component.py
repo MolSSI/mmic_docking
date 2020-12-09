@@ -1,4 +1,4 @@
-from mmelemental.components.docking_component import DockingComponent
+from mmelemental.components.sim.docking_component import DockingComponent
 from mmic_docking.components.autodock.autodock_prep_component import (
     AutoDockPrepComponent,
 )

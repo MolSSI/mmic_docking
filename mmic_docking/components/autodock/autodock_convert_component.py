@@ -1,9 +1,9 @@
-from mmelemental.components.constructor_component import MolConstructorComponent
+from mmelemental.components.io.constructor_component import MolConstructorComponent
 from typing import Any, Dict, List, Optional, Tuple
 import os
 
 from mmic_docking.models.input import DockingRawInput
-from mmelemental.models.sim.docking import DockingInput
+from mmelemental.models.input.docking import DockingInput
 from mmelemental.models.molecule.mm_molecule import Molecule
 from mmelemental.models.util.input import FileInput
 from mmelemental.models.chem.codes import ChemCode
