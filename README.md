@@ -59,10 +59,3 @@ Copyright (c) 2020, MolSSI
 
 Project based on the
 [Computational Molecular Science Python Cookiecutter](https://github.com/molssi/cookiecutter-cms) version 1.1.
-
-#### Issues
-
-- Factory components
-- Debugging components
-- Performance (I/O overhead)
-- Read/write methods left to components?
