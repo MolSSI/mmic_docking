@@ -4,7 +4,6 @@ import os
 
 from mmic_docking.models.input import DockingRawInput
 from mmelemental.models.input.docking import DockingInput
-from mmelemental.models.molecule.mm_molecule import Molecule
 from mmelemental.models.util.input import FileInput
 from mmelemental.models.chem.codes import ChemCode
 
