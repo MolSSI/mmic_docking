@@ -4,7 +4,6 @@ Component for molecular docking
 """
 
 # Add imports here
-from .mmic_docking import *
 from . import components
 from . import models
 
