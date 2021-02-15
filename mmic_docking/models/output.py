@@ -3,6 +3,7 @@ from mmelemental.models.input.docking import DockingInput
 from mmelemental.models.util.output import ComputeOutput
 from pydantic import Field
 
+
 class DockingComputeOutput(ComputeOutput):
     dockingInput: DockingInput = Field(..., description="Docking input model.")
     scores: List[float] = Field(

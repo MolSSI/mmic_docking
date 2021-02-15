@@ -1,7 +1,8 @@
-from typing import List, Optional, Tuple, Union
+from typing import Optional
 from mmelemental import models
 from mmelemental.models.input.docking import DockingInput
 from pydantic import Field
+
 
 class DockingRawInput(models.base.Base):
     ligand: str = Field(
