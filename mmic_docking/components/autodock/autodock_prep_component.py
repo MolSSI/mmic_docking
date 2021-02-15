@@ -2,12 +2,12 @@ from mmic_docking.models.autodock.input import AutoDockComputeInput
 from mmelemental.models.input.docking import DockingInput
 from mmelemental.models.util.input import OpenBabelInput, FileInput
 from mmelemental.models.util.output import FileOutput
-from mmelemental.models.molecule.mm_molecule import Molecule
+from mmelemental.models.molecule.mm_mol import Mol
 
 from mmic_docking.components.docking_prep_component import DockPrepComponent
 from mmelemental.components.util.openbabel_component import OpenBabel
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 import os
 
 
@@ -20,7 +20,7 @@ class AutoDockPrepComponent(DockPrepComponent):
         self, input_data: DockingInput, config: "TaskConfig" = None
     ) -> Tuple[bool, AutoDockComputeInput]:
         binput = self.build_input(input_data)
-        return True, AutoDockComputeInput(dockingInput=input_data, **binput)
+        return True, AutoDockComputeInput(dockInput=input_data, **binput)
 
     def build_input(
         self, input_model: DockingInput, template: Optional[str] = None
@@ -34,7 +34,7 @@ class AutoDockPrepComponent(DockPrepComponent):
         return inputDict
 
     # helper functions
-    def receptor_prep(self, receptor: Molecule) -> str:
+    def receptor_prep(self, receptor: Mol) -> str:
         pdb_name = DockPrepComponent.randomString() + ".pdb"
         fo = FileOutput(path=os.path.abspath(pdb_name))
         receptor.to_file(fo.path)
