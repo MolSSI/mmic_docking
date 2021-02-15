@@ -6,6 +6,7 @@ from mmelemental.models.util.input import FileInput
 from mmelemental.components.util.cmd_component import CmdComponent
 import os
 
+
 class AutoDockComputeComponent(CmdComponent):
     @classmethod
     def input(cls):
@@ -70,7 +71,7 @@ class AutoDockComputeComponent(CmdComponent):
         cmd = ["vina"]
 
         for key, val in input_model.items():
-            if val and key is not 'provenance':
+            if val and key is not "provenance":
                 cmd.append("--" + key)
                 if isinstance(val, str):
                     cmd.append(val)

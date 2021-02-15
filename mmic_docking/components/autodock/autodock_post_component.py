@@ -9,7 +9,7 @@ from mmic_docking.components.docking_post_component import DockPostComponent
 from mmelemental.components.util.openbabel_component import OpenBabel
 from mmelemental.components.util.cmd_component import CmdComponent
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 import os
 
 
