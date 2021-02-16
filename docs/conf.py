@@ -150,7 +150,7 @@ latex_documents = [
         "mmic_docking Documentation",
         "mmic_docking",
         "manual",
-    ),
+    )
 ]
 
 
@@ -175,7 +175,7 @@ texinfo_documents = [
         "mmic_docking",
         "Component for molecular docking",
         "Miscellaneous",
-    ),
+    )
 ]
 
 
