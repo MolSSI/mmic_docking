@@ -19,17 +19,17 @@ Applications of docking include:
 
 ```python
 # Import MM molecule data model
-from mmelemental.models.molecule.mm_molecule import Molecule
+from mmelemental.models.molecule import Molecule
 
 # Construct MM molecules
 receptor_data   = Molecule.from_file(pdb_file)
 ligand_data     = Molecule.from_data(smiles_code)
 
-# Import docking data model
-from mmelemental.models.sim.docking import DockingInput
+# Import docking data model compliant with MMSchema
+from mmelemental.models.app.docking import DockInput
 
-# Construct docking input data from MM molecules
-dock_input = DockingInput(ligand=ligand_data, receptor=receptor_data)
+# Construct docking input data from MMSchema molecules
+dock_input = DockInput(ligand=ligand_data, receptor=receptor_data)
 
 ```
 
@@ -41,7 +41,7 @@ dock_input = DockingInput(ligand=ligand_data, receptor=receptor_data)
 
 ```python
 # Import docking simulation component for autodock vina
-from mmic_docking.components.autodock.autodock_component import AutoDockComponent
+from mmic_autodock.components.autodock_component import AutoDockComponent
 
 # Run autodock vina
 dock_output = AutoDockComponent.compute(dock_input)
@@ -52,7 +52,7 @@ scores, poses = dock_output.scores, dock_output.poses
 
 ### Copyright
 
-Copyright (c) 2020, MolSSI
+Copyright (c) 2021, MolSSI
 
 
 #### Acknowledgements
