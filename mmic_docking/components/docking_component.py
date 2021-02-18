@@ -1,13 +1,13 @@
 from mmelemental.models.app.docking import DockInput
 from mmelemental.models.app.docking import DockOutput
-from mmic.components.blueprints.generic_component import GenericComponent
+from mmelemental.components.util.cmd_component import CmdComponent
 from typing import Dict, List, Tuple, Optional, Any
 
 
 __all__ = ["DockComponent"]
 
 
-class DockComponent(GenericComponent):
+class DockComponent(CmdComponent):
     @classmethod
     def input(cls):
         return DockInput
