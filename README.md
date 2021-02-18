@@ -1,5 +1,5 @@
 # What is Docking?
-Docking is a computational technique used to determine the optimal binding modes of a ligand-receptor system. A ligand is typically a small (e.g. drug) molecule that binds to a macromolecular receptor such as a protein. A docking simulation estimates the strength of the binding (or a quantitative "score") in the vicinity of the receptor's binding site. Each score corresponds to the 3D conformation and orientation (or "pose") of the ligand relative to the receptor.
+Docking is a computational technique used to determine the optimal binding modes of a ligand-receptor system. A ligand is typically a small (e.g. drug) molecule that binds to a macromolecular receptor such as a protein. A docking simulation estimates the strength of the binding (or a quantitative "score") in the vicinity of the receptor's binding site. Each score corresponds to the 3D conformation and orientation of the ligand relative to the receptor (or the "pose").
 
 <p align="center">
 <img src="mmic_docking/data/imgs/docking-sys-removebg.png" width="500">
@@ -47,7 +47,7 @@ from mmic_autodock.components.autodock_component import AutoDockComponent
 dock_output = AutoDockComponent.compute(dock_input)
 
 # Extract output
-scores, poses = dock_output.scores, dock_output.poses
+scores, ligands = dock_output.scores, dock_output.ligands
 ```
 
 ### Copyright
