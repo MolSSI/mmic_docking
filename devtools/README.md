@@ -9,11 +9,14 @@ conda installation, and other development tools not directly related to the codi
 ### Continuous Integration
 
 You should test your code, but do not feel compelled to use these specific programs. You also may not need Unix and 
-Windows testing if you only plan to deploy on specific platforms. These are just to help you get started
+Windows testing if you only plan to deploy on specific platforms. These are just to help you get started.
 
-* `travis-ci`: Linux and OSX based testing through [Travis-CI](https://about.travis-ci.com/) 
-  * `before_install.sh`: Pip/Miniconda pre-package installation script for Travis 
-* `appveyor`: Windows based testing through [AppVeyor](https://www.appveyor.com/) (there are no files directly related to this)
+The items in this directory have been left for legacy purposes since the change to GitHub Actions, 
+They will likely be removed in a future version.
+
+* `legacy-miniconda-setup`: A preserved copy of a helper directory which made Linux and OSX based testing through [Travis-CI](https://about.travis-ci.com/) simpler
+  * `before_install.sh`: Pip/Miniconda pre-package installation script for Travis. No longer needed thanks to 
+    [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) and the [conda-incubator/setup-miniconda Action](https://github.com/conda-incubator/setup-miniconda)
 
 ### Conda Environment:
 
@@ -56,5 +59,5 @@ is installed by looking at the `git` tags and how many commits ahead this versio
 \d+.\d+.\d+(?\+\d+-[a-z0-9]+)
 ```
 If the version of this commit is the same as a `git` tag, the installed version is the same as the tag, 
-e.g. `mmic_docking-0.1.2`, otherwise it will be appended with `+X` where `X` is the number of commits 
+e.g. `mmic_parmed-0.1.2`, otherwise it will be appended with `+X` where `X` is the number of commits 
 ahead from the last tag, and then `-YYYYYY` where the `Y`'s are replaced with the `git` commit hash.
