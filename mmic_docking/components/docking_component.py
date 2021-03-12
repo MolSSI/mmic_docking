@@ -1,5 +1,5 @@
-from mmelemental.models.app.docking import DockInput
-from mmelemental.models.app.docking import DockOutput
+from ..models.input import DockInput
+from ..models.output import DockOutput
 from mmelemental.components.util.cmd_component import CmdComponent
 from typing import Dict, List, Tuple, Optional, Any
 
