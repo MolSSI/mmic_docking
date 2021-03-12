@@ -1,13 +1,14 @@
 from ..models.input import DockInput
 from ..models.output import DockOutput
 from mmelemental.components.util.cmd_component import CmdComponent
+import abc
 from typing import Dict, List, Tuple, Optional, Any
 
 
 __all__ = ["DockComponent"]
 
 
-class DockComponent(CmdComponent):
+class DockComponent(CmdComponent, abc.ABC):
     @classmethod
     def input(cls):
         return DockInput
@@ -16,6 +17,7 @@ class DockComponent(CmdComponent):
     def output(cls):
         return DockOutput
 
+    @abc.abstractmethod
     def execute(
         self,
         inputs: Dict[str, Any],
@@ -25,4 +27,4 @@ class DockComponent(CmdComponent):
         timeout: Optional[int] = None,
     ) -> Tuple[bool, Dict[str, Any]]:
 
-        pass
+        raise NotImplementedError
