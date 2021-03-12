@@ -1,7 +1,7 @@
 [//]: # (Badges)
 [![GitHub Actions Build Status](https://github.com/MolSSI/mmic_docking/workflows/CI/badge.svg)](https://github.com/MolSSI/mmic_docking/actions?query=workflow%3ACI)
 [![codecov](https://codecov.io/gh/MolSSI/mmic_docking/branch/master/graph/badge.svg)](https://codecov.io/gh/MolSSI/mmic_docking/branch/master)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/MolSSI/mmic_docking.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/MolSSI/mmic_mda/context:python)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/MolSSI/mmic_docking.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/MolSSI/mmic_docking/context:python)
 
 # What is Docking?
 Docking is a computational technique used to determine the optimal binding modes of a ligand-receptor system. A ligand is typically a small (e.g. drug) molecule that binds to a macromolecular receptor such as a protein. A docking simulation estimates the strength of the binding (or a quantitative "score") in the vicinity of the receptor's binding site. Each score corresponds to the 3D conformation and orientation of the ligand relative to the receptor (or the "pose").
