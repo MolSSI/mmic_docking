@@ -1,13 +1,13 @@
-from mmelemental.models.app.base import SimInput, SimOutput
-from mmelemental.models.base import ProtoModel
-from mmelemental.models.molecule import Molecule
+from mmelemental.models.proc import ProcInput
 from .common import DockMol
 from pydantic import Field
 from typing import Optional, Tuple, Union
 
 
-class DockInput(SimInput):
-    mol: DockMol = Field(
+__all__ = ["DockInput"]
+
+class DockInput(ProcInput):
+    molecule: DockMol = Field(
         ...,
         description="Molecular mechanics molecule object(s). See the :class:``DockMol`` class. "
         "Example: mol = {'ligand': Molecule, 'receptor': Molecule, 'solvent': Molecule}.",
