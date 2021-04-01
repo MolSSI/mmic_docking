@@ -1,30 +1,25 @@
-from ..models.input import DockInput
-from ..models.output import DockOutput
-from mmelemental.components.util.cmd_component import CmdComponent
-import abc
-from typing import Dict, List, Tuple, Optional, Any
+from mmic.components.blueprints import GenericComponent
+from mmic_docking.models import DockInput, DockOutput
+from typing import Set, Dict, Any
 
 
 __all__ = ["DockComponent"]
 
 
-class DockComponent(CmdComponent, abc.ABC):
+class DockComponent(GenericComponent):
     @classmethod
-    def input(cls):
+    def input(cls) -> Dict[str, Any]:
         return DockInput
 
     @classmethod
-    def output(cls):
+    def output(cls) -> Dict[str, Any]:
         return DockOutput
 
-    @abc.abstractmethod
-    def execute(
-        self,
-        inputs: Dict[str, Any],
-        extra_outfiles: Optional[List[str]] = None,
-        extra_commands: Optional[List[str]] = None,
-        scratch_name: Optional[str] = None,
-        timeout: Optional[int] = None,
-    ) -> Tuple[bool, Dict[str, Any]]:
-
-        raise NotImplementedError
+    @property
+    def supported_comps(self) -> Set[str]:
+        """Returns the supported components e.g. set(['mmic_mda',...]).
+        Returns
+        -------
+        Set[str]
+        """
+        return set()
