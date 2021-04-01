@@ -1,5 +1,4 @@
-from ..models.input import DockInput
-from ..models.output import DockOutput
+from mmic_docking.models import DockInput, DockOutput
 from mmic.components.blueprints import SpecificComponent
 from typing import List, Tuple, Optional, Set
 
