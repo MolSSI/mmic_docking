@@ -5,8 +5,7 @@ Unit and regression test for the mmic_docking package.
 # Import package, test suite, and other packages as needed
 import mmic_docking
 from mmelemental.models.molecule import Molecule
-from mmic_docking.models.input import DockInput
-from mmic_docking.models.output import DockOutput
+from mmic_docking.models import DockInput, DockOutput
 from mmic_docking.components import DockComponent
 import pytest
 import sys
@@ -26,7 +25,7 @@ def test_mmic_docking_input():
     searchSpace = [-37.807, 5.045, -2.001, 30.131, -19.633, 37.987]
 
     return DockInput(
-        mol={"ligand": ligand, "receptor": receptor},
+        molecule={"ligand": ligand, "receptor": receptor},
         searchSpace=searchSpace,
         searchSpace_units="angstrom",
     )
@@ -34,15 +33,13 @@ def test_mmic_docking_input():
 
 def test_mmic_docking_output(dock_input=None):
     dock_input = test_mmic_docking_input() if dock_input == None else dock_input
-    ligand = dock_input.mol.ligand
-    receptor = dock_input.mol.receptor
+    ligand = dock_input.molecule.ligand
+    receptor = dock_input.molecule.receptor
 
     return DockOutput(
-        simInput=dock_input,
-        observables={
-            "score": [1, 3, 6],
-        },
-        observables_units={"score": "kJ/mol"},
+        proc_input=dock_input,
+        scores=[1, 3, 6],
+        scores_units="kJ/mol",
         poses={
             "ligand": [ligand, ligand, ligand],
             "receptor": [receptor, receptor, receptor],
