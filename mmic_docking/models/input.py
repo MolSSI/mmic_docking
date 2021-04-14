@@ -12,7 +12,7 @@ class DockInput(ProcInput):
         description="Molecular mechanics molecule object(s). See the :class:``DockMol`` class. "
         "Example: mol = {'ligand': Molecule, 'receptor': Molecule, 'solvent': Molecule}.",
     )
-    searchSpace: Optional[
+    search_space: Optional[
         Union[
             Tuple[float, float],
             Tuple[float, float, float, float],
@@ -24,6 +24,6 @@ class DockInput(ProcInput):
         "(xmin, xmax, ymin, ymax, zmin, zmax) in 3D. The search space effectively restricts where the "
         "movable atoms, including those in the flexible side chains, should lie. Default unit in Angstroms.",
     )
-    searchSpace_units: Optional[str] = Field(
+    search_space_units: Optional[str] = Field(
         "angstrom", description="Spatial units for search space box."
     )
