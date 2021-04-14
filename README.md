@@ -45,7 +45,9 @@ dock_input = {
 }
 ```
 
-## Running Docking an engine component
+## Running Docking with an engine component
+
+To run the computation, you need a specific component that connects to a docking engine such as [mmic_autodock_vina](https://github.com/MolSSI/mmic_autodock_vina).
 
 ```python
 # Import docking simulation component for autodock vina
