@@ -26,8 +26,8 @@ def test_mmic_docking_input():
 
     return DockInput(
         molecule={"ligand": ligand, "receptor": receptor},
-        searchSpace=searchSpace,
-        searchSpace_units="angstrom",
+        search_space=searchSpace,
+        search_space_units="angstrom",
     )
 
 
