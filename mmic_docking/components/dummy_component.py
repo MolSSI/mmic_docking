@@ -1,12 +1,12 @@
 from mmic_docking.models import DockInput, DockOutput
-from mmic.components.blueprints import SpecificComponent
+from mmic.components.blueprints import TacticComponent
 from typing import List, Tuple, Optional, Set
 
 
 __all__ = ["DockDummyComponent"]
 
 
-class DockDummyComponent(SpecificComponent):
+class DockDummyComponent(TacticComponent):
     """
     A sample component that does nothing interesting. Follow the same structure
     to develop your own dock component. You can attach any helper method to this
@@ -21,6 +21,9 @@ class DockDummyComponent(SpecificComponent):
     @classmethod
     def output(cls):
         return DockOutput
+
+    def get_version(self):
+        return ""
 
     def execute(
         self,
