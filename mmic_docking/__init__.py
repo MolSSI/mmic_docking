@@ -6,9 +6,9 @@ Component for molecular docking
 # Add imports here
 from . import components
 from . import models
+from .components import *
+from .models import *
 
-# For testing dummy component
-_mainComponent = components.dummy_component.DockDummyComponent
 
 # Handle versioneer
 from ._version import get_versions
