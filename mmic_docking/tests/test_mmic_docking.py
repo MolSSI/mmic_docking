@@ -7,6 +7,7 @@ import mmic_docking
 from mmelemental.models.molecule import Molecule
 from mmic_docking.models import DockInput, DockOutput
 from mmic_docking.components import DockComponent
+from mmic.components.blueprints import TacticComponent
 import pytest
 import sys
 
@@ -31,8 +32,8 @@ def test_mmic_docking_input():
     )
 
 
-def test_mmic_docking_output(dock_input=None):
-    dock_input = test_mmic_docking_input() if dock_input == None else dock_input
+def test_mmic_docking_output(dockin=None):
+    dock_input = test_mmic_docking_input() if dockin == None else dockin
     ligand = dock_input.molecule.ligand
     receptor = dock_input.molecule.receptor
 
@@ -48,7 +49,23 @@ def test_mmic_docking_output(dock_input=None):
 
 
 def test_mmic_docking_component():
-    class TestDockComponent(DockComponent):
+    class TestDockComponent(TacticComponent):
+
+        @classmethod
+        def output(cls):
+            return DockOutput
+
+        @classmethod
+        def input(cls):
+            return DockInput
+
+        def get_version(self):
+            return ""
+
+        @classmethod
+        def strategy_comp(cls):
+            return DockComponent
+
         def execute(
             self,
             inputs,
@@ -62,3 +79,8 @@ def test_mmic_docking_component():
 
     inputs = test_mmic_docking_input()
     test = TestDockComponent.compute(inputs)
+
+
+def test_mmic_docking_dummy_component(dockin=None):
+    dock_input = test_mmic_docking_input() if dockin == None else dockin
+    dockout = mmic_docking.components.DockComponent.compute(dock_input)
