@@ -6,6 +6,7 @@ from typing import Optional, Tuple, Union
 
 __all__ = ["DockInput"]
 
+
 class DockInput(ProcInput):
     molecule: DockMol = Field(
         ...,

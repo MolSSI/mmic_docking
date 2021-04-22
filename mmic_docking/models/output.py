@@ -6,6 +6,7 @@ from typing import List, Optional
 
 __all__ = ["DockOutput"]
 
+
 class DockOutput(ProcOutput):
     proc_input: DockInput = Field(..., description="Docking input model.")
     poses: DockMol = Field(
