@@ -57,7 +57,7 @@ from mmic_docking.components import DockComponent
 dock_output = DockComponent.compute(dock_input)
 
 # Extract output
-scores, ligands = dock_output.observables.scores, dock_output.poses.ligand
+scores, ligands = dock_output.scores, dock_output.poses.ligand
 ```
 
 ### Copyright
