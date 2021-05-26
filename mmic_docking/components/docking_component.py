@@ -1,7 +1,7 @@
 from mmic.components.blueprints import StrategyComponent
 from mmic_docking.models import DockInput, DockOutput
 from typing import Set, Dict, List, Tuple, Any, Optional
-
+import importlib
 
 __all__ = ["DockComponent"]
 
@@ -15,14 +15,14 @@ class DockComponent(StrategyComponent):
     def output(cls) -> Dict[str, Any]:
         return DockOutput
 
-    @property
-    def tactic_comps(self) -> Set[str]:
-        """Returns the supported components e.g. set(['mmic_mda',...]).
+    @classmethod
+    def tactic_comps(cls) -> Set[str]:
+        """Returns the supported components e.g. set(['mmic_autodock_vina',...]).
         Returns
         -------
         Set[str]
         """
-        return set()
+        return set(["mmic_autodock_vina"])
 
     def get_version(self):
         return ""
@@ -41,13 +41,10 @@ class DockComponent(StrategyComponent):
             inputs = self.input()(**inputs)
 
         if inputs.component:
-            raise NotImplementedError
+            tactic_comp = importlib.import_module(inputs.component)
         else:
-            import mmic_autodock_vina
+            raise NotImplementedError
 
-            RunComponent = mmic_autodock_vina.RunComponent
-            inputs = inputs.dict()
-            inputs["component"] = "mmic_autodock_vina"
+        dockOutput = tactic_comp.components.RunComponent.compute(inputs)
 
-        dockOutput = RunComponent.compute(inputs)
         return True, dockOutput
