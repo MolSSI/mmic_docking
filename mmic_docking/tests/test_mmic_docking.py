@@ -8,8 +8,18 @@ from mmelemental.models.molecule import Molecule
 from mmic_docking.models import DockInput, DockOutput
 from mmic_docking.components import DockComponent
 from mmic.components.blueprints import TacticComponent
+import importlib
 import pytest
 import sys
+
+
+tactic_comps = DockComponent.tactic_comps()
+avail_comps = [comp for comp in tactic_comps if importlib.util.find_spec(comp)]
+
+
+def pytest_generate_tests(metafunc):
+    if "comp" in metafunc.fixturenames:
+        metafunc.parametrize("comp", avail_comps)
 
 
 def test_mmic_docking_imported():
@@ -50,7 +60,6 @@ def test_mmic_docking_output(dockin=None):
 
 def test_mmic_docking_component():
     class TestDockComponent(TacticComponent):
-
         @classmethod
         def output(cls):
             return DockOutput
@@ -81,6 +90,7 @@ def test_mmic_docking_component():
     test = TestDockComponent.compute(inputs)
 
 
-def test_mmic_docking_dummy_component(dockin=None):
+def test_mmic_docking_dummy_component(comp, dockin=None):
     dock_input = test_mmic_docking_input() if dockin == None else dockin
+    dock_input = DockInput(component=comp, **dock_input.dict())
     dockout = mmic_docking.components.DockComponent.compute(dock_input)
