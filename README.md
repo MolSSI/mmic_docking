@@ -39,7 +39,7 @@ dock_input = {
     "molecule": {
         "ligand": ligand, 
         "receptor": receptor
-    }
+    },
     "search_space": (xmin, xmax, ymin, ymax, zmin, zmax),
     "search_space_units": "angstrom",
 }
