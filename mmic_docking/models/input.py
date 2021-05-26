@@ -1,8 +1,7 @@
-from mmelemental.models.proc import ProcInput
+from mmelemental.models import ProcInput
 from .common import DockMol
 from pydantic import Field
 from typing import Optional, Tuple, Union
-
 
 __all__ = ["DockInput"]
 
