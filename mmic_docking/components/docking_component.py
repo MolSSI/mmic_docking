@@ -43,7 +43,7 @@ class DockComponent(StrategyComponent):
         if inputs.component:
             tactic_comp = importlib.import_module(inputs.component)
         else:
-            raise NotImplementedError
+            tactic_comp = importlib.import_module("mmic_autodock_vina")
 
         dockOutput = tactic_comp.components.RunComponent.compute(inputs)
 
