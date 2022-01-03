@@ -1,5 +1,6 @@
 from mmic.components.blueprints import StrategyComponent
-from mmic_docking.models import DockInput, DockOutput
+from mmic_docking.models import InputDock, OutputDock
+from cmselemental.util.decorators import classproperty
 from typing import Set, Dict, List, Tuple, Any, Optional
 import importlib
 
@@ -7,15 +8,15 @@ __all__ = ["DockComponent"]
 
 
 class DockComponent(StrategyComponent):
-    @classmethod
+    @classproperty
     def input(cls) -> Dict[str, Any]:
-        return DockInput
+        return InputDock
 
-    @classmethod
+    @classproperty
     def output(cls) -> Dict[str, Any]:
-        return DockOutput
+        return OutputDock
 
-    @classmethod
+    @classproperty
     def tactic_comps(cls) -> Set[str]:
         """Returns the supported components e.g. set(['mmic_autodock_vina',...]).
         Returns
@@ -24,7 +25,8 @@ class DockComponent(StrategyComponent):
         """
         return set(["mmic_autodock_vina"])
 
-    def get_version(self):
+    @classproperty
+    def version(self) -> str:
         return ""
 
     def execute(
@@ -38,7 +40,7 @@ class DockComponent(StrategyComponent):
     ) -> Tuple[bool, Dict[str, Any]]:
 
         if isinstance(inputs, dict):
-            inputs = self.input()(**inputs)
+            inputs = self.input(**inputs)
 
         if inputs.component:
             tactic_comp = importlib.import_module(inputs.component)

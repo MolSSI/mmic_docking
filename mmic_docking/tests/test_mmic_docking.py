@@ -4,8 +4,9 @@ Unit and regression test for the mmic_docking package.
 
 # Import package, test suite, and other packages as needed
 import mmic_docking
-from mmelemental.models.molecule import Molecule
-from mmic_docking.models import DockInput, DockOutput
+from mmelemental.models import Molecule
+from cmselemental.util.decorators import classproperty
+from mmic_docking.models import InputDock, OutputDock
 from mmic_docking.components import DockComponent
 from mmic.components.blueprints import TacticComponent
 import importlib
@@ -13,7 +14,7 @@ import pytest
 import sys
 
 
-tactic_comps = DockComponent.tactic_comps()
+tactic_comps = DockComponent.tactic_comps
 avail_comps = [comp for comp in tactic_comps if importlib.util.find_spec(comp)]
 
 
@@ -35,7 +36,9 @@ def test_mmic_docking_input():
 
     searchSpace = [-37.807, 5.045, -2.001, 30.131, -19.633, 37.987]
 
-    return DockInput(
+    return InputDock(
+        schema_name="mmschema",
+        schema_version=1,
         molecule={"ligand": ligand, "receptor": receptor},
         search_space=searchSpace,
         search_space_units="angstrom",
@@ -47,7 +50,10 @@ def test_mmic_docking_output(dockin=None):
     ligand = dock_input.molecule.ligand
     receptor = dock_input.molecule.receptor
 
-    return DockOutput(
+    return OutputDock(
+        success=True,
+        schema_name="mmschema",
+        schema_version=1,
         proc_input=dock_input,
         scores=[1, 3, 6],
         scores_units="kJ/mol",
@@ -60,19 +66,20 @@ def test_mmic_docking_output(dockin=None):
 
 def test_mmic_docking_component():
     class TestDockComponent(TacticComponent):
-        @classmethod
+        @classproperty
         def output(cls):
-            return DockOutput
+            return OutputDock
 
-        @classmethod
+        @classproperty
         def input(cls):
-            return DockInput
+            return InputDock
 
-        def get_version(self):
+        @classproperty
+        def version(self):
             return ""
 
-        @classmethod
-        def strategy_comp(cls):
+        @classproperty
+        def strategy_comps(cls):
             return DockComponent
 
         def execute(
@@ -92,5 +99,7 @@ def test_mmic_docking_component():
 
 def test_mmic_docking_dummy_component(comp, dockin=None):
     dock_input = test_mmic_docking_input() if dockin == None else dockin
-    dock_input = DockInput(component=comp, **dock_input.dict())
+    dock_input = dock_input.dict()
+    dock_input.setdefault("component", comp)
+    dock_input = InputDock(**dock_input)
     dockout = mmic_docking.components.DockComponent.compute(dock_input)

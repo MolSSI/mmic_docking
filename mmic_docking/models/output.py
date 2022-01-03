@@ -1,14 +1,14 @@
-from mmelemental.models.proc import ProcOutput
+from cmselemental.models import OutputProc
 from .common import DockMol
-from .input import DockInput
+from .input import InputDock
 from pydantic import Field, root_validator
 from typing import List, Optional
 
-__all__ = ["DockOutput"]
+__all__ = ["OutputDock"]
 
 
-class DockOutput(ProcOutput):
-    proc_input: DockInput = Field(..., description="Docking input model.")
+class OutputDock(OutputProc):
+    proc_input: InputDock = Field(..., description="Docking input model.")
     poses: DockMol = Field(
         ...,
         description="A collection of ligand and optionally receptor poses. See the :class:``Ensemble`` class. ",

@@ -1,5 +1,5 @@
 from mmelemental.models.base import ProtoModel
-from mmelemental.models.molecule import Molecule
+from mmelemental.models import Molecule
 from pydantic import Field
 from typing import List, Union, Optional
 

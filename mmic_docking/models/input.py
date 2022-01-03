@@ -1,12 +1,12 @@
-from mmelemental.models import ProcInput
+from cmselemental.models import InputProc
 from .common import DockMol
 from pydantic import Field
 from typing import Optional, Tuple, Union
 
-__all__ = ["DockInput"]
+__all__ = ["InputDock"]
 
 
-class DockInput(ProcInput):
+class InputDock(InputProc):
     molecule: DockMol = Field(
         ...,
         description="Molecular mechanics molecule object(s). See the :class:``DockMol`` class. "
@@ -27,3 +27,4 @@ class DockInput(ProcInput):
     search_space_units: Optional[str] = Field(
         "angstrom", description="Spatial units for search space box."
     )
+    component: str = Field(None, description="Component name.")
